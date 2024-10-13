@@ -1,17 +1,11 @@
-#include <msp430.h> 
+#include <msp430.h>
 
 void configure_clocks() {
-    // Unlock CS registers
-    CSCTL0 = CSKEY;
-
-    // Set DCO to 8 MHz (DCOFSEL_3 with DCORSEL = 0)
-    CSCTL1 |= DCOFSEL_3;      // DCO frequency select: 8 MHz, DCORSEL = 0
-
-    // Set DCO as the source for SMCLK
-    CSCTL2 |= SELS__DCOCLK;
-
-    // Set SMCLK divider to 32
-    CSCTL3 |= DIVS__32;
+    CSCTL0 = 0xA500;                  // Write password to modify CS registers
+    CSCTL1 = DCOFSEL_3;               // Set DCO to 8 MHz
+    CSCTL2 = SELM__DCOCLK | SELS__DCOCLK | SELA__DCOCLK;  // Set MCLK, SMCLK, ACLK to DCO
+    CSCTL3 = DIVA__8 | DIVS__8;       // Divide SMCLK and ACLK by 8 (1 MHz)
+    CSCTL0_H = 0;                     // Lock CS registers
 
     // Set P3.4 as output for SMCLK
     P3DIR |= BIT4;           // Set P3.4 as an output
@@ -75,6 +69,10 @@ void configure_pins_for_interrupt() {
 
 int main(void) {
     WDTCTL = WDTPW | WDTHOLD;           // Stop watchdog timer
+
+
+    configure_clocks();
+
 
     __bis_SR_register(GIE);             // Enable global interrupts
 
