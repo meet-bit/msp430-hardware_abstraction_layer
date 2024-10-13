@@ -25,6 +25,7 @@ void configure_UART() {
     UCA0MCTLW = 0xD600;                // Set modulation UCBRSx=0xD6, UCOS16=1
 
     UCA0CTLW0 &= ~UCSWRST;             // Release UART from reset
+    UCA0IE |= UCRXIE;                  // Enable UART Rx interrupt
 }
 
 void configure_LED() {
