@@ -1,4 +1,4 @@
-This lab consists in a set of exercises designed to teach you the basics of firmware programming using the
+This lab consists in a set of exercises designed to teach the basics of firmware programming using the
 MSP430 family from Texas Instruments. Specific learning objectives include the following:
 
 	● Understand the capabilities and operation of microprocessors
