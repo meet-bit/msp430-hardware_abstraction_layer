@@ -14,4 +14,7 @@ MSP430 family from Texas Instruments. Specific learning objectives include the f
 	● Understand the difference between polling, interrupt-driven, and event-driven programs
 
 
-Note: All programs written by Meet Nandu. The Excercises are designed and published by Dr. Hongshen Ma for MECH 423 at UBC
+## License and Copyright
+
+All programs are written by Meet Nandu. The exercises are designed and published by Dr. Hongshen Ma for MECH 423 at UBC.
+
